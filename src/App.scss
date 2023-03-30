@@ -1,0 +1,79 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+}
+
+.wrapper {
+	display: flex;
+	min-height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
+
+.todo {
+	width: 100%;
+	max-width: 500px;
+	padding: 20px;
+	border: 1px solid #000;
+}
+
+.todo-add {
+	display: flex;
+	justify-content: space-between;
+
+	&__input {
+		width: calc(100% - 90px);
+		height: 40px;
+		padding: 5px 10px;
+	}
+
+	&__btn {
+		width: 80px;
+		height: 40px;
+	}
+}
+
+.todo-list {
+	margin-top: 20px;
+	list-style: none;
+
+	&__item {
+		margin-bottom: 10px;
+		text-align: left;
+	}
+}
+
+.todo-filter {
+	display: flex;
+	padding: 10px 0;
+	list-style: none;
+
+}
+
+.check {
+	position: relative;
+
+	&__input {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		&:checked + .check__label {
+			text-decoration: line-through;
+		}
+	}
+
+	&__label {
+		display: block;
+		padding-left: 20px;
+		cursor: pointer;
+	}
+}

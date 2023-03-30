@@ -1,28 +1,74 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app" class="wrapper">
+		<div class="todo">
+			<TodoAdd/>
+			<TodoFilters v-bind:filters="filters"/>
+			<TodoList v-bind:todos="todos"/>
+		</div>		
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import './App.scss';
+import TodoAdd from './components/TodoAdd.vue';
+import TodoList from './components/TodoList.vue';
+import TodoFilters from './components/TodoFilters.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		TodoList,
+		TodoAdd,
+		TodoFilters
+	}, 
+	data() {
+		return {
+			todos: [
+				{
+					id: 1,
+					text: 'test1',
+					check: true,
+				}, {
+					id: 2,
+					text: 'test2',
+					check: false,
+				}, {
+					id: 3,
+					text: 'test3',
+					check: false,
+				}, {
+					id: 4,
+					text: 'test4',
+					check: false,
+				}
+			],
+			filters: [
+				{
+					id: 1,
+					text: 'Все',
+					check: true,
+
+				}, {
+					id: 2,
+					text: 'В процессе',
+					check: false,
+				}, {
+					id: 3,
+					text: 'Завершенные',
+					check: false,
+				}
+			],
+			task: '',
+			isComplited: false,
+			isLoaded: false
+		}
+	},
+	mounted: function() {
+		// console.log('test');
+		// this.isLoaded = true;
+		// fetch('https://jsonplaceholder.typicode.com/todos/')
+		//   .then(response => response.json())
+		//   .then(json => this.todos = json)
+	}
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
