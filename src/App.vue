@@ -23,6 +23,7 @@ export default {
 	}, 
 	data() {
 		return {
+			inputValue: '',
 			todos: [
 				{
 					id: 1,
@@ -61,6 +62,11 @@ export default {
 			task: '',
 			isComplited: false,
 			isLoaded: false
+		}
+	},
+	methods: {
+		addTask: function() {
+			console.log('add task');
 		}
 	},
 	mounted: function() {
