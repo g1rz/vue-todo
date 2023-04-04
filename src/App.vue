@@ -24,25 +24,7 @@ export default {
 	data() {
 		return {
 			inputValue: '',
-			todos: [
-				{
-					id: 1,
-					text: 'test1',
-					check: true,
-				}, {
-					id: 2,
-					text: 'test2',
-					check: false,
-				}, {
-					id: 3,
-					text: 'test3',
-					check: false,
-				}, {
-					id: 4,
-					text: 'test4',
-					check: false,
-				}
-			],
+			todos: [],
 			filters: [
 				{
 					id: 1,
@@ -65,16 +47,11 @@ export default {
 		}
 	},
 	methods: {
-		addTask: function() {
-			console.log('add task');
-		}
+		
 	},
-	mounted: function() {
-		// console.log('test');
-		// this.isLoaded = true;
-		// fetch('https://jsonplaceholder.typicode.com/todos/')
-		//   .then(response => response.json())
-		//   .then(json => this.todos = json)
-	}
+	mounted() {
+		this.todos = this.$store.getters.TODOS;
+		console.log(this.$store);
+	},
 }
 </script>
