@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
 		{
 			id: 1,
 			text: 'test1',
-			check: true,
+			check: false,
 		}, {
 			id: 2,
 			text: 'test2',
@@ -26,8 +26,12 @@ export const store = new Vuex.Store({
 	]
   },
   getters: {
-	TODOS: state => {
+	GET_TODOS: state => {
 		return state.todos;
+	},
+	GET_TODO: (state, id) => {
+		let item = state.todos.filter(item => item.id === id);
+		return item[0];
 	}
   },
   mutations: {
@@ -35,13 +39,27 @@ export const store = new Vuex.Store({
 		state.todos = payload
 	},
 	ADD_TODO: (state, payload) => {
+		let id = state.todos[state.todos.length - 1].id + 1;
+		payload.id = id;
 		state.todos.push(payload)
+	},
+	UPDATE_TODO: (state, payload) => {
+		
+		state.todos = state.todos.map(item => {
+			if (item.id === payload) {
+				item.check = !item.check;
+			}
+			return item;
+		})
+		console.log(state.todos);
 	}
   },
   actions: {
-	SAVE_TODO: (context, payload) => {
-		console.log(payload);
-		// context.commit('ADD_TODO', payload);
+	ACTION_ADD_TODO: (context, payload) => {
+		context.commit('ADD_TODO', payload);
+	},
+	ACTION_UPDATE_TODO: (context, payload) => {
+		context.commit('UPDATE_TODO', payload);
 	}
   },
 });

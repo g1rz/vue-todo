@@ -17,11 +17,10 @@ export default {
         onSubmit: function() {
 			console.log('add task', this.inputValue);
             const newTask = {
-                id: Math.floor(Math.random() * 300),
                 text: this.inputValue,
                 check: false
             };
-            this.$store.dispatch('SAVE_TODO', newTask);
+            this.$store.dispatch('ACTION_ADD_TODO', newTask);
             this.inputValue = '';
 		}
     }

@@ -50,8 +50,7 @@ export default {
 		
 	},
 	mounted() {
-		this.todos = this.$store.getters.TODOS;
-		console.log(this.$store);
+		this.todos = this.$store.getters.GET_TODOS;
 	},
 }
 </script>
